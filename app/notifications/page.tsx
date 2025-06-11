@@ -1010,7 +1010,7 @@ export default function NotificationsPage() {
           .map((doc) => {
             const data = doc.data() as any;
             return { id: doc.id, ...data };
-          })
+          })  
           .filter(
             (notification: any) => notification.cardNumber
           ) as Notification[];

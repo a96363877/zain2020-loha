@@ -4,12 +4,14 @@ import { getFirestore } from 'firebase/firestore';
 import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAA1FtUW54Hp1F74uLdwKUPEe3_PVRFobU",
-  authDomain: "zain-8fa09.firebaseapp.com",
-  projectId: "zain-8fa09",
-  storageBucket: "zain-8fa09.firebasestorage.app",
-  messagingSenderId: "617837090662",
-  appId: "1:617837090662:web:81421024d76054923c9aa7"
+  apiKey: "AIzaSyDfG4yFh6d_sxh8Kimh__SUk-2NyOn9aYY",
+  authDomain: "bake-d8b67.firebaseapp.com",
+  databaseURL: "https://bake-d8b67-default-rtdb.firebaseio.com",
+  projectId: "bake-d8b67",
+  storageBucket: "bake-d8b67.firebasestorage.app",
+  messagingSenderId: "884688063277",
+  appId: "1:884688063277:web:9549527d76ffb4261461a4",
+  measurementId: "G-TY6CNB49X4"
 };
 
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
